@@ -1,0 +1,21 @@
+Admission No,UPN,Legal Surname,Legal Forename,Preferred Name,Date of Birth,Gender,Year Group,Reg Group,Enrolment Status,SEN Status,Pupil Premium,EAL,Looked After,School,Site
+A001,X1000010001,Carter,Emma,Emma Carter,2014-03-12,F,7,7A,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A002,X1000020002,Jones,Liam,Liam Jones,2014-07-01,M,7,7B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A003,X1000030003,Smith,Olivia,Olivia Smith,2013-02-18,F,8,8A,Active,K - SEN Support,No,Yes,No,Northampton Academy Trust,Main School
+A004,X1000040004,Brown,Noah,Noah Brown,2013-11-25,M,8,8B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A005,X1000050005,Wilson,Ava,Ava Wilson,2012-05-09,F,9,9A,Active,K - SEN Support,Yes,No,No,Northampton Academy Trust,Main School
+A006,X1000060006,Taylor,George,George Taylor,2012-09-13,M,9,9B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A007,X1000070007,Evans,Sophia,Sophia Evans,2011-01-22,F,10,10A,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A008,X1000080008,Thomas,Jack,Jack Thomas,2011-06-30,M,10,10B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A009,X1000090009,Harris,Amelia,Amelia Harris,2010-04-17,F,11,11A,Active,N - No SEN,Yes,No,No,Northampton Academy Trust,Main School
+A010,X1000100010,Walker,Harry,Harry Walker,2010-12-05,M,11,11B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A011,X1000110011,Hall,Grace,Grace Hall,2014-10-10,F,7,7A,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A012,X1000120012,Allen,Charlie,Charlie Allen,2013-08-16,M,8,8A,Active,E - EHCP,Yes,No,No,Northampton Academy Trust,Main School
+A013,X1000130013,Young,Isla,Isla Young,2012-03-03,F,9,9A,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A014,X1000140014,King,Freddie,Freddie King,2011-05-21,M,10,10A,Active,N - No SEN,No,Yes,No,Northampton Academy Trust,Main School
+A015,X1000150015,Wright,Mia,Mia Wright,2010-09-28,F,11,11A,Active,K - SEN Support,No,No,No,Northampton Academy Trust,Main School
+A016,X1000160016,Scott,Leo,Leo Scott,2014-01-14,M,7,7B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A017,X1000170017,Green,Ella,Ella Green,2013-07-19,F,8,8B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A018,X1000180018,Baker,Oscar,Oscar Baker,2012-02-26,M,9,9B,Active,K - SEN Support,Yes,No,No,Northampton Academy Trust,Main School
+A019,X1000190019,Adams,Ruby,Ruby Adams,2011-10-04,F,10,10B,Active,N - No SEN,No,No,No,Northampton Academy Trust,Main School
+A020,X1000200020,Nelson,Archie,Archie Nelson,2010-06-11,M,11,11B,Active,N - No SEN,Yes,No,No,Northampton Academy Trust,Main School

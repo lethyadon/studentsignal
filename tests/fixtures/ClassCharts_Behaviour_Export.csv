@@ -1,0 +1,35 @@
+Date,Admission No,Pupil Name,Year,Form,Type,Reason,Lesson,Points,Awarded By,Category
+01/07/2026,A001,Emma Carter,7,7A,Positive,Excellent classwork,English,2,Miss Lane,Achievement
+03/07/2026,A001,Emma Carter,7,7A,Positive,Helped another pupil,Science,2,Mr Patel,Achievement
+02/07/2026,A002,Liam Jones,7,7B,Negative,Homework not completed,Mathematics,-1,Mrs Cole,Behaviour
+28/06/2026,A003,Olivia Smith,8,8A,Negative,Withdrawn / not engaging,English,-1,Miss Lane,Behaviour
+04/07/2026,A003,Olivia Smith,8,8A,Negative,Peer conflict at lunch,Tutor,-2,Mr Grey,Behaviour
+05/07/2026,A004,Noah Brown,8,8B,Positive,Improved focus,History,1,Mrs Webb,Achievement
+24/06/2026,A005,Ava Wilson,9,9A,Negative,Defiance,Mathematics,-2,Mrs Cole,Behaviour
+27/06/2026,A005,Ava Wilson,9,9A,Negative,Walked out of lesson,Science,-3,Mr Patel,Behaviour
+01/07/2026,A005,Ava Wilson,9,9A,Negative,Refused reasonable instruction,English,-2,Miss Lane,Behaviour
+05/07/2026,A005,Ava Wilson,9,9A,Negative,Argument with peer,PE,-2,Mr Stone,Behaviour
+03/07/2026,A006,George Taylor,9,9B,Positive,Good homework,Geography,1,Mrs Bell,Achievement
+01/07/2026,A007,Sophia Evans,10,10A,Positive,Leadership,Drama,2,Ms Fox,Achievement
+30/06/2026,A008,Jack Thomas,10,10B,Negative,Late to lesson,Mathematics,-1,Mrs Cole,Behaviour
+06/07/2026,A008,Jack Thomas,10,10B,Negative,Mobile phone seen,Science,-1,Mr Patel,Behaviour
+25/06/2026,A009,Amelia Harris,11,11A,Negative,Refused work / low mood,English,-1,Miss Lane,Behaviour
+02/07/2026,A009,Amelia Harris,11,11A,Negative,Crying after break,Tutor,-1,Mr Grey,Behaviour
+05/07/2026,A009,Amelia Harris,11,11A,Negative,Left lesson upset,Mathematics,-2,Mrs Cole,Behaviour
+02/07/2026,A010,Harry Walker,11,11B,Positive,Strong assessment result,Mathematics,2,Mrs Cole,Achievement
+01/07/2026,A011,Grace Hall,7,7A,Positive,Kindness shown to peer,Tutor,2,Mr Grey,Achievement
+24/06/2026,A012,Charlie Allen,8,8A,Negative,Overwhelmed in corridor,SEN,-1,Mrs Wells,Behaviour
+03/07/2026,A012,Charlie Allen,8,8A,Negative,Missed intervention,SEN,-1,Mrs Wells,Behaviour
+04/07/2026,A013,Isla Young,9,9A,Positive,Consistent effort,Art,1,Ms Fox,Achievement
+01/07/2026,A014,Freddie King,10,10A,Negative,Missed detention,History,-2,Mrs Webb,Behaviour
+27/06/2026,A015,Mia Wright,11,11A,Negative,Anxious before assessment,Science,-1,Mr Patel,Behaviour
+04/07/2026,A015,Mia Wright,11,11A,Negative,Avoided lesson,Mathematics,-1,Mrs Cole,Behaviour
+06/07/2026,A016,Leo Scott,7,7B,Negative,Late to school,Tutor,-1,Mr Grey,Behaviour
+02/07/2026,A017,Ella Green,8,8B,Positive,Excellent presentation,English,2,Miss Lane,Achievement
+21/06/2026,A018,Oscar Baker,9,9B,Negative,Truancy,Attendance,-3,Mrs Hill,Behaviour
+26/06/2026,A018,Oscar Baker,9,9B,Negative,Truancy,Attendance,-3,Mrs Hill,Behaviour
+03/07/2026,A018,Oscar Baker,9,9B,Negative,Aggressive language,PE,-2,Mr Stone,Behaviour
+06/07/2026,A018,Oscar Baker,9,9B,Negative,Failed to attend detention,Pastoral,-2,Mrs Wells,Behaviour
+01/07/2026,A019,Ruby Adams,10,10B,Positive,Mentored Year 7 pupil,Tutor,2,Mr Grey,Achievement
+29/06/2026,A020,Archie Nelson,11,11B,Negative,Missing equipment,Science,-1,Mr Patel,Behaviour
+04/07/2026,A020,Archie Nelson,11,11B,Negative,Homework not completed,Mathematics,-1,Mrs Cole,Behaviour
