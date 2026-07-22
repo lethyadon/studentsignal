@@ -8,7 +8,7 @@ import {
   Database, Upload, Link2, CheckSquare, Circle, Users, Sliders,
   Copy, RefreshCw, Wifi, WifiOff, AlertTriangle, Eye, EyeOff,
   Trash2, Plus, Clock, Activity, Megaphone, Send, Info,
-  BadgeCheck, HelpCircle, Hash, CreditCard, ExternalLink, Zap, BookOpen,
+  BadgeCheck, HelpCircle, Hash, CreditCard, ExternalLink, Zap, BookOpen, X,
 } from 'lucide-react';
 import UserManagement from './UserManagement';
 import { ROLE_LABELS, ASSIGNABLE_ROLES } from '../lib/permissions';

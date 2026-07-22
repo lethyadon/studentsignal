@@ -908,7 +908,7 @@ export default function StaffDevelopment() {
               <div>
                 <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Responsible person <span className="text-red-500">*</span></label>
                 <input type="text" value={assignForm.assignedTo} onChange={e => setAssignForm(f => ({ ...f, assignedTo: e.target.value }))} list="staff-list-dev" className="input-premium w-full" placeholder="Who will action this?" />
-                <datalist id="staff-list-dev">{DEMO_STAFF.map(s => <option key={s} value={s} />)}</datalist>
+                <datalist id="staff-list-dev">{DEMO_STAFF.map(s => <option key={s.name} value={s.name} />)}</datalist>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>

@@ -1,10 +1,11 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { explainAssignment, explainPriority, explainSignal } from '../lib/explainEngine';
+import { explainSignal } from '../lib/explainEngine';
 import { AssignmentRationale, ExplainPanel } from '../components/ExplainPanel';
 import ExplainButton from '../components/ExplainButton';
 import { explainFlag, explainAssignment, explainPriority } from '../lib/explain';
+import type { Explanation } from '../lib/explain';
 import { usePersonalQueue } from '../hooks/usePersonalQueue';
 import { getStudents, getAnalysisResults, getInterventions, getCommunications, getSchoolProfiles, DEMO_STAFF, MOCK_BEHAVIOUR, getAllDemoSignalStatuses, setDemoSignalStatus, addDemoIntervention, updateDemoIntervention, mapOwnerToStaffName, subscribeToSignalStatuses, subscribeToInterventions, getHOYYearGroup, ALL_YEAR_GROUPS, type SignalStatus } from '../lib/data';
 import { canViewSafeguarding, isStudentInScope } from '../lib/permissions';
@@ -314,6 +315,8 @@ export default function SignalQueue() {
   const [acceptForm, setAcceptForm] = useState({
     action_type: '',
     assigned_to: '',
+    assigned_to_user_id: null as string | null | undefined,
+    assigned_role: '',
     priority: '' as string,
     due_date: '',
     notes: '',
@@ -1187,6 +1190,7 @@ export default function SignalQueue() {
                                 // When profile exists: store UUID. When awaiting account: store role-label.
                                 assigned_to: resolvedProfile ? (resolvedProfile.id) : (existingAction?.assigned_to ?? owner),
                                 assigned_to_user_id: resolvedUserId ?? undefined,
+                                assigned_role: '',
                                 priority: student.risk_level === 'red' ? 'urgent' : 'high',
                                 due_date: dueDate.toISOString().split('T')[0],
                                 notes: pattern?.suggestedAction || analysis?.signal_explanation || '',
@@ -1560,18 +1564,17 @@ export default function SignalQueue() {
                 {/* Why? — canonical ExplainPanel using explainEngine */}
                 {acceptForm.reason && acceptModalItem && (() => {
                   const sig = acceptModalItem.student;
-                  const assignExpl = explainAssignment({
-                    assigneeName: schoolProfiles.find(p => p.id === acceptForm.assigned_to_user_id)?.full_name ?? acceptForm.assigned_to ?? null,
-                    assigneeRole: acceptForm.assigned_role ?? 'head_of_year',
-                    studentName: sig.name,
-                    yearGroup: sig.year_group,
-                    signalType: acceptModalItem.pattern?.type ?? 'behaviour',
-                    isUnresolved: !acceptForm.assigned_to_user_id,
-                  });
+                  const assignExpl = explainAssignment(
+                    schoolProfiles.find(p => p.id === acceptForm.assigned_to_user_id)?.full_name ?? acceptForm.assigned_to ?? null,
+                    acceptForm.assigned_role ?? 'head_of_year',
+                    null,
+                    !acceptForm.assigned_to_user_id,
+                    null,
+                  );
                   return (
                     <AssignmentRationale
                       summary={assignExpl.summary}
-                      bullets={[acceptForm.reason, ...assignExpl.bullets].filter(Boolean) as string[]}
+                      bullets={[acceptForm.reason, ...(assignExpl.paragraphs ?? [])].filter(Boolean) as string[]}
                     />
                   );
                 })()}

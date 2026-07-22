@@ -79,6 +79,15 @@ export interface AnalysisResult {
   evidence_count?: number;
   data_sources?: string[];
   confidence_score?: number;
+  trajectory?: 'insufficient_data' | 'stable' | 'volatile' | 'improving' | 'deteriorating';
+  trajectory_text?: string;
+  intervention_count?: number;
+  recurrence_count?: number;
+  signal_types?: string[];
+  memory_narrative?: string | null;
+  suggested_owner?: string | null;
+  created_at?: string | null;
+  updated_at?: string;
 }
 
 export interface Intervention {
@@ -122,6 +131,9 @@ export interface Intervention {
   next_step?: string | null;
   source?: 'auto' | 'manual' | null;
   assigned_to_user_id?: string | null;
+  signal_types?: string[];
+  review_owner_id?: string | null;
+  escalation_owner_id?: string | null;
 }
 
 export interface PatternWorkflowRecord {
@@ -212,6 +224,7 @@ export interface Communication {
   created_at: string;
   routing_status?: 'pending_review' | 'routed' | 'dismissed';
   suggested_assignee?: string | null;
+  outcome?: string | null;
 }
 
 export type QuickNoteConcernLevel = 1 | 2 | 3 | 4 | 5;

@@ -425,7 +425,7 @@ export default function ActionDrawer({
                   Mark In Progress
                 </button>
               )}
-              <button onClick={onComplete} className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
+              <button onClick={() => onComplete()} className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
                 <CheckCircle className="w-4 h-4" />
                 Complete
               </button>
@@ -463,7 +463,7 @@ export default function ActionDrawer({
         )}
         {i.status === 'escalated' && (
           <div className="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-4 space-y-2">
-            <button onClick={onComplete} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
+            <button onClick={() => onComplete()} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
               <CheckCircle className="w-4 h-4" />
               Resolve escalation
             </button>

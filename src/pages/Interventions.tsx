@@ -579,7 +579,7 @@ export default function Interventions() {
         !['completed', 'closed', 'cancelled', 'suggested'].includes(i.status)
       );
       const allDone = remainingActive.length === 0;
-      let sigSt: string;
+      let sigSt: import("../lib/data").SignalStatus;
       if (completeForm.nextStep === 'escalate') {
         sigSt = 'escalated';
       } else if (allDone && (completeForm.outcomeCategory === 'Resolved' || completeForm.nextStep === 'close' || completeForm.outcomeCategory === 'Significant Improvement')) {

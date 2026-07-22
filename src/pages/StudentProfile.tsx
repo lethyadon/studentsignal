@@ -11,14 +11,7 @@ import QuickNoteModal from '../components/QuickNoteModal';
 import { detectSafeguarding } from '../lib/safeguarding';
 import SafeguardingAlert from '../components/SafeguardingAlert';
 import { getVisibleNoteTypes, hasPermission, isStudentInScope } from '../lib/permissions';
-import {
-  ArrowLeft, User, AlertTriangle, AlertCircle, TrendingDown, BookOpen, Clock,
-  Phone, Briefcase, Calendar, CalendarDays, Brain, GraduationCap, ClipboardList,
-  ShieldAlert, CheckCircle, Plus, Edit, Save, X, Activity,
-  MessageSquare, Eye, RefreshCw, ChevronDown, ChevronUp, StickyNote,
-  Target, Zap, ArrowRight, Flag, FileText, RotateCcw, ChevronRight,
-  TrendingUp, Star, Layers, Route, Siren,
-} from 'lucide-react';
+import { ArrowLeft, User, AlertTriangle, AlertCircle, TrendingDown, BookOpen, Clock, Phone, Briefcase, Calendar, CalendarDays, Brain, GraduationCap, ClipboardList, ShieldAlert, CheckCircle, Plus, CreditCard as Edit, Save, X, Activity, MessageSquare, Eye, RefreshCw, ChevronDown, ChevronUp, StickyNote, Target, Zap, ArrowRight, Flag, FileText, RotateCcw, ChevronRight, TrendingUp, Star, Layers, Route, Siren } from 'lucide-react';
 
 const TABS = [
   { id: 'overview', label: 'Overview', icon: User },
@@ -330,6 +323,7 @@ export default function StudentProfile() {
   const [assignForm, setAssignForm] = useState({
     action_type: '',
     assigned_to: '',
+    assigned_role: '',
     priority: 'medium' as 'low' | 'medium' | 'high' | 'urgent',
     due_date: '',
     review_date: '',
@@ -585,7 +579,7 @@ export default function StudentProfile() {
       const hasAttendanceOfficer = /attendance officer|attendance lead/i.test(staffText);
 
       const safeguardingNote = quickNotes.find(n =>
-        n.category === 'Safeguarding concern' || (n.concern_level >= 4 && n.category !== 'Positive observation')
+        n.category === 'Safeguarding review prompt' || (n.concern_level >= 4 && n.category !== 'Positive observation')
       );
       const hasSafeguardingEvidence = !!safeguardingNote || analysis.key_reasons.some(r => /safeguarding/i.test(r));
 
@@ -643,7 +637,7 @@ export default function StudentProfile() {
 
       // Form Tutor Alert
       if (hasFormTutor && !activeTypes.has('Tutor check-in')) {
-        const tutorNote = quickNotes.find(n => n.concern_level >= 3 && n.category !== 'Safeguarding concern');
+        const tutorNote = quickNotes.find(n => n.concern_level >= 3 && n.category !== 'Safeguarding review prompt');
         recs.push({
           id: 'rec_staff_tutor',
           action_name: 'Form Tutor Alert',
@@ -735,7 +729,7 @@ export default function StudentProfile() {
         priority: 'high',
         icon_type: 'pastoral',
         evidence_type: 'analysis',
-        owner_role: 'pastoral',
+        owner_role: 'pastoral' as any,
         evidence_items: griefEvidence.length > 0
           ? griefEvidence
           : [{ label: 'Signal', value: 'Grief / bereavement identified in pattern analysis', severity: 'high' as const }],
@@ -921,6 +915,7 @@ export default function StudentProfile() {
     setAssignForm({
       action_type: rec?.action_type || '',
       assigned_to: mapOwnerToStaffName(rec?.suggested_owner || '', student?.year_group),
+      assigned_role: '',
       priority: rec?.priority || 'medium',
       due_date: addWeeks(1),
       review_date: addWeeks(rec?.review_weeks || 2),
@@ -2287,7 +2282,7 @@ export default function StudentProfile() {
                   if (recentComms.length === 0) adviceItems.push({ icon: 'comms', text: 'No parent/carer contact on record. First point of contact should be a pastoral phone call.', priority: 'high' });
                   if (activeInts.filter(i => i.action_type.toLowerCase().includes('pastoral')).length === 0) adviceItems.push({ icon: 'pastoral', text: 'No active pastoral meeting intervention. Consider scheduling one — use the Actions tab to create.', priority: 'medium' });
                 } else if (role === 'dsl') {
-                  const safeNote = visibleNotes.find(qn => qn.category === 'Safeguarding concern' || qn.concern_level >= 4);
+                  const safeNote = visibleNotes.find(qn => qn.category === 'Safeguarding review prompt' || qn.concern_level >= 4);
                   if (safeNote) adviceItems.push({ icon: 'safe', text: `Safeguarding note logged by ${safeNote.staff_member} on ${safeNote.date}. Review below and consider CPOMS update.`, priority: 'high' });
                   const safeInt = activeInts.find(i => /safeguard|welfare/i.test(i.action_type));
                   if (safeInt) adviceItems.push({ icon: 'int', text: `Active safeguarding action: "${safeInt.action_type}" — due ${safeInt.due_date}. Update CPOMS and record outcome.`, priority: 'high' });
@@ -3175,6 +3170,8 @@ export default function StudentProfile() {
               typeConfig={TYPE_CONFIG}
               severityRing={SEVERITY_RING}
               onAddNote={() => setShowQuickNote(true)}
+              dismissedActions={dismissedActions}
+              undoDismissal={undoDismissal}
             />
           );
         })()}
@@ -7440,6 +7437,8 @@ function TimelineTab({
   typeConfig,
   severityRing,
   onAddNote,
+  dismissedActions,
+  undoDismissal,
 }: {
   timeline: TimelineEvent[];
   filterOptions: readonly { id: string; label: string }[];
@@ -7447,6 +7446,8 @@ function TimelineTab({
   typeConfig: Record<TimelineEvent['type'], { dot: string; icon: React.ComponentType<{ className?: string }>; label: string }>;
   severityRing: Record<string, string>;
   onAddNote: () => void;
+  dismissedActions: Set<string>;
+  undoDismissal: (id: string) => void;
 }) {
   const [activeFilter, setActiveFilter] = useState<string>('all');
 

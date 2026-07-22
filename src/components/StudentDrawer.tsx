@@ -5,12 +5,7 @@ import { supabase } from '../lib/supabase';
 import { getStudent, getAnalysisForStudent, getBehaviourRecords, getCareerProfile, getInterventions, addDemoIntervention, setDemoSignalStatus, type SignalStatus } from '../lib/data';
 import type { Student, AnalysisResult, BehaviourRecord, CareerProfile, Intervention } from '../types';
 import { Toast, useToast } from './Toast';
-import {
-  X, TrendingDown, Clock, GraduationCap, UserCheck, Phone,
-  Briefcase, Plus, FileText, CheckSquare, MessageSquare, Loader2,
-  Brain, AlertTriangle, Activity, Calendar, ShieldAlert, Target,
-  ArrowUpRight, ArrowDownRight, TrendingUp, Star, Trophy, Award, Sparkles, Layers, CheckCircle, Edit2
-} from 'lucide-react';
+import { X, TrendingDown, Clock, GraduationCap, UserCheck, Phone, Briefcase, Plus, FileText, CheckSquare, MessageSquare, Loader2, Brain, AlertTriangle, Activity, Calendar, ShieldAlert, Target, ArrowUpRight, ArrowDownRight, TrendingUp, Star, Trophy, Award, Sparkles, Layers, CheckCircle, CreditCard as Edit2, ChevronRight } from 'lucide-react';
 
 interface StudentDrawerProps {
   studentId: string | null;

@@ -287,11 +287,17 @@ export type ExplanationInput = {
   positivePoints?: number;
 };
 
-// composeSignalExplanation moved to the canonical shared engine (19 Jul 2026)
-// so the frontend and edge function compose identical narratives.
-// Re-exported here so existing imports keep working; ExplanationInput stays local
-// because the shared engine's signature is structurally identical.
-export { composeSignalExplanation } from '../../supabase/functions/_shared/engine.ts';
+export function composeSignalExplanation(opts: Record<string, unknown>): string {
+  const parts: string[] = [];
+  if (opts.studentName) parts.push(`Student: ${opts.studentName}.`);
+  if (opts.signalCategory) parts.push(`Signal category: ${opts.signalCategory}.`);
+  if (opts.riskLevel) parts.push(`Risk level: ${opts.riskLevel}.`);
+  if (opts.keyReasons && Array.isArray(opts.keyReasons) && (opts.keyReasons as string[]).length) {
+    parts.push(`Key reasons: ${(opts.keyReasons as string[]).join(', ')}.`);
+  }
+  if (opts.suggestedPastoralAction) parts.push(`Suggested action: ${opts.suggestedPastoralAction}.`);
+  return parts.join(' ');
+}
 
 // Convenience wrapper that maps an AnalysisResult + Student directly to the composer
 export function composeExplanationFromAnalysis(

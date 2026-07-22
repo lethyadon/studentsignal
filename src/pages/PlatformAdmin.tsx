@@ -59,7 +59,7 @@ function EmailModal({ school, onClose, onSent }: EmailModalProps) {
   const [recipientEmail, setRecipientEmail] = useState(school.contact_email ?? '');
   const [customMessage, setCustomMessage] = useState('');
   const [sending, setSending] = useState(false);
-  const [preview, setPreview] = useState<{ subject: string; body: string } | null>(null);
+  const [preview, setPreview] = useState<{ subject: string; body: string; to?: string } | null>(null);
   const [sent, setSent] = useState(false);
 
   const ACTION_OPTIONS = [
