@@ -287,24 +287,17 @@ export type ExplanationInput = {
   positivePoints?: number;
 };
 
-export function composeSignalExplanation(opts: Record<string, unknown>): string {
-  const parts: string[] = [];
-  if (opts.studentName) parts.push(`Student: ${opts.studentName}.`);
-  if (opts.signalCategory) parts.push(`Signal category: ${opts.signalCategory}.`);
-  if (opts.riskLevel) parts.push(`Risk level: ${opts.riskLevel}.`);
-  if (opts.keyReasons && Array.isArray(opts.keyReasons) && (opts.keyReasons as string[]).length) {
-    parts.push(`Key reasons: ${(opts.keyReasons as string[]).join(', ')}.`);
-  }
-  if (opts.suggestedPastoralAction) parts.push(`Suggested action: ${opts.suggestedPastoralAction}.`);
-  return parts.join(' ');
-}
+// Re-export the canonical shared engine implementation — environment-neutral, used by
+// both this frontend adapter and the edge function (supabase/functions/run-analysis).
+import { composeSignalExplanation as _composeSignalExplanation } from '../../supabase/functions/_shared/engine';
+export { _composeSignalExplanation as composeSignalExplanation };
 
 // Convenience wrapper that maps an AnalysisResult + Student directly to the composer
 export function composeExplanationFromAnalysis(
   analysis: Partial<AnalysisResult>,
   student?: Partial<Student>
 ): string {
-  return composeSignalExplanation({
+  return _composeSignalExplanation({
     studentName: student?.name,
     riskLevel: analysis.risk_level,
     signalCategory: analysis.signal_category,

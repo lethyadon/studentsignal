@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { explainSignal } from '../lib/explainEngine';
 import { AssignmentRationale, ExplainPanel } from '../components/ExplainPanel';
 import ExplainButton from '../components/ExplainButton';
 import { explainFlag, explainAssignment, explainPriority } from '../lib/explain';
